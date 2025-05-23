@@ -27,7 +27,10 @@ nav a {
 main {
   padding: 40px 20px;
   max-width: 800px;
-  margin: auto;
+  margin-left: 150px;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
   flex: 1;
 }
 
