@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Over mij - Visschers Inc.</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="feesh.png" alt="Feesh" height="35px" width="35px" class="fish_top">
+      <font size="5"><a href="index.html">Visschers Inc.</a></font>
+    </nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="overmij.html">Over mij</a>
+      <a href="projecten.html">Projecten</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Hoi!</h1>
+    <p>Ik ben Joris, 14 jaar, en deze website heb ik volledig zelf gemaakt.</p>
+    <p>Ik zit op dit moment in V3 op het Eligant Lyceum. Ik heb in mijn profiel - onder andere - informatica gekozen, en daarom bestaat deze site nu.<br>
+    Online sta ik beter bekend als SpaceVis, de gebruikersnaam die ik van mijn vader "geërfd" heb en voor bijna alles gebruik.<br>
+    Enkele hobby's van mij zijn gamen, programmeren (verrassend?) en lezen. De games die ik nu vooral speel zijn Deltarune, Undertale, One-Armed Robber en Cuphead. Mijn programmeer-skills houden eigenlijk op bij Python, maar ik ken genoeg HTML/CSS/JS om deze website te maken. Lezen staat daar een beetje haaks op, maar ik vind het heerlijk om in een boek weg te duiken. De boeken die mij het meest aanstaan zijn vooral dystopische boeken. Denk aan The Hunger Games, Zeis (leuke triologie - ga het lezen!), enzovoorts.<br></p>
+    <p>Voor de rest valt er over mij niet veel te vertellen. Mocht je nog meer willen weten, <a href="contact.html">neem contact met me op</a>!</p>
+
+  </main>
+  <!-- GALLERY MADE USING AI TOOLS. -->
+  <div class="gallery-container">
+    <button class="gallery-arrow" id="gallery-prev">&#8592;</button>
+    <div class="gallery-images">
+      <div class="gallery-item">
+        <img class="gallery-img" id="gallery-img-0" src="img1.jpg" alt="Gallery Image 1">
+        <div class="gallery-label" id="gallery-label-0">Label 1</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-img" id="gallery-img-1" src="img2.jpg" alt="Gallery Image 2">
+        <div class="gallery-label" id="gallery-label-1">Label 2</div>
+      </div>
+      <div class="gallery-item">
+        <img class="gallery-img" id="gallery-img-2" src="img3.jpg" alt="Gallery Image 3">
+        <div class="gallery-label" id="gallery-label-2">Label 3</div>
+      </div>
+    </div>
+    <button class="gallery-arrow" id="gallery-next">&#8594;</button>
+  </div>
+  <script>
+    // SCRIPT MADE USING AI TOOLS.
+    const images = [
+      { src: "batarong.webp", label: "batarong (bringus favorite)" },
+      { src: "feesh.png", label: "DE vis" },
+      { src: "Clippy_StocksDown.gif", label: "Clippy krijgt wat hij verdient" },
+      { src: "napoleo.png", label: "napoleo (matt rose favorite)" },
+      { src: "Schoof.png", label: "De Dick die (uit het kabinet) Schoof" }
+    ];
+    let current = 0;
+    function updateGallery() {
+      for (let i = 0; i < 3; i++) {
+        const imgElem = document.getElementById('gallery-img-' + i);
+        const labelElem = document.getElementById('gallery-label-' + i);
+        const imgIndex = (current + i) % images.length;
+        imgElem.src = images[imgIndex].src;
+        imgElem.alt = "Gallery Image " + (imgIndex + 1);
+        labelElem.textContent = images[imgIndex].label;
+      }
+    }
+    document.getElementById('gallery-prev').onclick = () => {
+      current = (current - 1 + images.length) % images.length;
+      updateGallery();
+    };
+    document.getElementById('gallery-next').onclick = () => {
+      current = (current + 1) % images.length;
+      updateGallery();
+    };
+    updateGallery();
+  </script>
+  <!-- END OF AI GENERATED CODE. -->
+  <footer>
+    Design created using Figma. Copyleft 2025 SpaceVis
+  </footer>
+</body>
+</html>
