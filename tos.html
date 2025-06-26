@@ -5,8 +5,10 @@
         <script src="scripts.js"></script>
     </head>
     <body>
-        <i class="noWingdings">The Terms Of Service, provided to you in KIX-code.</i>
-        <br><br><br><br>Terms of Service Agreement (TOS v42.69) 
+        <button id="startTOS" style="font-size:2em; margin: 2em auto; display:block;">View Terms of Service</button>
+        <div id="tosContent" style="display:none;">
+            <i class="noWingdings">The Terms Of Service, provided to you in KIX-code.</i>
+            <br><br><br><br>Terms of Service Agreement (TOS v42.69) 
 <br>
 <br>Effective Date: The beginning of all suffering 
 <br>
@@ -178,55 +180,62 @@
 <br>Thanks for using our Service™. We love you. Mostly. As long as you give us your kneecaps. 
 <br>
 <div class="noWingdings">(Kijk, DIT is dus slecht webdesign!)</div>
-<img id="jack" src="assets/jackenstein.png" />
-<audio id="tooLong" src="assets/YOUR TAKING TOO LONG.mp3"></audio>
-<audio id="jackLaugh" src="assets/jackLaugh.mp3"></audio>
-<script>
-    const jack = document.getElementById('jack');
-    const tooLong = document.getElementById('tooLong');
-    const jackLaugh = document.getElementById('jackLaugh');
-    let chasing = false;
-    let mouseX = 0, mouseY = 0;
-    let jackX = window.innerWidth / 2 - 50;
-    let jackY = 200;
-    let step = 5;
+        </div>
+        <img id="jack" src="assets/jackenstein.png" />
+        <audio id="tooLong" src="assets/YOUR TAKING TOO LONG.mp3"></audio>
+        <audio id="jackLaugh" src="assets/jackLaugh.mp3"></audio>
+        <script>
+        const jack = document.getElementById('jack');
+        const tooLong = document.getElementById('tooLong');
+        const jackLaugh = document.getElementById('jackLaugh');
+        const tosContent = document.getElementById('tosContent');
+        const startBtn = document.getElementById('startTOS');
+        let chasing = false;
+        let mouseX = 0, mouseY = 0;
+        let jackX = window.innerWidth / 2 - 50;
+        let jackY = 200;
+        let step = 5;
 
-    document.addEventListener('mousemove', e => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
+        document.addEventListener('mousemove', e => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
 
-    function movejack() {
-      if (!chasing) return;
-      const dx = mouseX - (jackX + 50); // center of image
-      const dy = mouseY - (jackY + 50);
-      const dist = Math.hypot(dx, dy);
-      if (dist < 150) {
-        window.location.href = 'index.html';
-        return;
-      }
-      const angle = Math.atan2(dy, dx);
-      jackX += step * Math.cos(angle);
-      jackY += step * Math.sin(angle);
-      jack.style.left = jackX + 'px';
-      jack.style.top = jackY + 'px';
-      requestAnimationFrame(movejack);
-      step = step + 0.1;
-    }
+        function movejack() {
+          if (!chasing) return;
+          const dx = mouseX - (jackX + 50); // center of image
+          const dy = mouseY - (jackY + 50);
+          const dist = Math.hypot(dx, dy);
+          if (dist < 150) {
+            window.location.href = 'index.html';
+            return;
+          }
+          const angle = Math.atan2(dy, dx);
+          jackX += step * Math.cos(angle);
+          jackY += step * Math.sin(angle);
+          jack.style.left = jackX + 'px';
+          jack.style.top = jackY + 'px';
+          requestAnimationFrame(movejack);
+          step = step + 0.1;
+        }
 
-    setTimeout(() => {
-        jack.style.display = 'block';
-        jack.style.left = jackX + 'px';
-        jack.style.top = jackY + 'px';
-        tooLong.play();
-        tooLong.onended = () => {
-            chasing = true;
-            jackLaugh.loop = true;
-            jackLaugh.play();
-            movejack();
-        };
-    }, 10000);
-  </script>
+        startBtn.addEventListener('click', () => {
+            startBtn.style.display = 'none';
+            tosContent.style.display = 'block';
+            setTimeout(() => {
+                jack.style.display = 'block';
+                jack.style.left = jackX + 'px';
+                jack.style.top = jackY + 'px';
+                tooLong.play();
+                tooLong.onended = () => {
+                    chasing = true;
+                    jackLaugh.loop = true;
+                    jackLaugh.play();
+                    movejack();
+                };
+            }, 10000);
+        });
+        </script>
     </body>
     <style>
     @font-face {
